@@ -1,0 +1,1 @@
+export const str="haitao 666"
