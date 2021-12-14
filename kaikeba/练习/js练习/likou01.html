@@ -6,31 +6,111 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
 </head>
 
 <body>
+  <div id="div" style="border:1px solid #000;;width: 400px;margin-bottom: 100px;display: inline-block">
+    <div style="float: left; background-color: red;width: 100px;;height: 100px;"></div>
+    <div style="float: right; background-color: red;width: 100px;;height: 100px;"></div>
+
+  </div>
+  <div id="div" style="border:1px solid #000;margin-top:100px;width: 400px;overflow: hidden;">
+    <div style="float: left; background-color: red;width: 100px;;height: 100px;"></div>
+    <div style="float: right; background-color: red;width: 100px;;height: 100px;"></div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
   <script>
-    /**
-     * @param {number[]} nums1
-     * @param {number} m
-     * @param {number[]} nums2
-     * @param {number} n
-     * @return {void} Do not return anything, modify nums1 in-place instead.
-     */
-    var merge = function (nums1, m, nums2, n) {
-      // console.log(nums2.splice(0, n))
-      return nums1.splice(0, m, ...nums2.splice(0, n))
+    var rotateRight = function (head, k) {
+      if (!head || !head.next || k == 0) return head
+      let i = 0;
+      let current = head;
+      let oldEnd = null
+      while (current !== null) {
+        i++
+        oldEnd = current
+        current = current.next
+
+      }
+      let step = (i - k % i) % i;
+      console.log(step, k, i, k % i)
+      console.log(step)
+      if (step == 0) {
+        return head
+      }
+      current = head;
+      let newEnd = null
+
+      while (step > 0) {
+
+        if (step == 1) {
+          newEnd = current
+        }
+        step--;
+        current = current.next;
+      }
+
+      console.log('current', current);
+      newEnd.next = null;
+      oldEnd.next = head;
+      return current
+
+      // let newhead = current.next;
+      // newhead.next = head;
+      // current.next = null;
+      // return newhead
+
+
+
     };
-    let nums1 = [1],
-      m = 1,
-      nums2 = [],
-      n = 0;
-    let nums3 = [1, 2, 3, 0, 0, 0],
-      m3 = 3,
-      nums4 = [2, 5, 6],
-      n4 = 3
-    // console.log(merge(nums1, m, nums2, n))
-    console.log(merge(nums3, m3, nums4, n4))
+    const testData = {
+      val: 1,
+      next: {
+        val: 2,
+        next: {
+          val: 3,
+          next: {
+            val: 4,
+            next: {
+              val: 5,
+              next: null
+            }
+          }
+        }
+      }
+    }
+    const testData3 = {
+      val: 1,
+      next: {
+        val: 2,
+        next: {
+          val: 3,
+          next: {
+            val: 4,
+            next: null
+          }
+        }
+      }
+    }
+    const testData4 = {
+      val: 1,
+      next: {
+        val: 2,
+        next: null
+      }
+    }
+    const testData2 = {}
+    console.log(rotateRight(testData3, 2))
   </script>
 
 </body>

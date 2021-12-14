@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function timeout(ms) {
+      return new Promise((resolve) => {
+        throw new Error('出错了')
+      });
+    }
+
+    async function asyncPrint(value, ms) {
+      // try {
+
+      //   await timeout(ms);
+      // } catch (e) {
+      //   console.log('e', e);
+
+      // }
+      // await timeout(ms).then((val) => {
+      //   console.log(val)
+      // }).catch(e => {
+      //   console.log(e)
+      // });
+      // console.log(value);
+      await timeout(ms);
+    }
+
+    asyncPrint('hello world', 2000).catch(e => {
+      console.log('e3', e);
+    });
+    console.log('aa');
+
+    // async function f() {
+    //   throw new Error('出错了');
+    // }
+
+    // f().then(
+    //   v => console.log('resolve', v),
+    //   e => console.log('reject', e)
+    // )
+  </script>
+</body>
+
+</html>
