@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let add = function (x) {
+      let sum = 1;
+      let tmp = function (x) {
+        sum = sum + x;
+        return tmp
+      }
+      tmp.toString = function () {
+        return sum
+      }
+      return tmp
+    }
+    alert(add(1)(2)(3))
+
+
+    Promise.resolve().then(() => {
+      console.log('promise1');
+      setTimeout(() => {
+        console.log('timer2')
+      }, 0)
+    });
+    setTimeout(() => {
+      console.log('timer1')
+      Promise.resolve().then(() => {
+        console.log('promise2')
+      })
+    }, 0)
+    console.log('start');
+
+
+
+    var name = 'Window';
+    var p = {
+      name: 'Perter',
+      getName: function () {
+        var self = this;
+        return function () {
+          return self.name
+        }
+      }
+    }
+    var getName = p.getName();
+    var _name = getName();
+    console.log(_name)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @return {number[][]}
+     */
+    var permute = function (nums) {
+      let all = [];
+      nums.forEach(item => {
+        all.push([item])
+        // let rest = nums.splice(nums.indexof(item), 1);
+
+
+
+      })
+
+      function run(allInner) {
+        for (let i = all.length - 1; i >= 0; i--) {
+          let newArr = [...allInner]
+          newArr.splice(i, 1)
+          console.log(newArr)
+          for (let j = 0; j < newArr.length; j++) {
+            all.push(all[i].concat(newArr[j]))
+            // if (j === all.length - 1) {
+            //   all.splice(all.indexOf(all[j]), 1);
+            // }
+
+            // return run(all)
+
+          }
+          all.splice(all.indexOf(all[i]), 1)
+          console.log(all)
+
+
+
+
+        }
+      }
+      return run(all)
+
+    };
+    console.log(permute([1, 2, 3]));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const str = 'aaaaaaa';
+    const key = 'b';
+
+    function cal(str, key) {
+      let reg = new RegExp(key, 'ig');
+      let res = str.match(reg);
+      if (!res) {
+        return 0
+      }
+      return str.match(reg).length
+
+    }
+    console.log(cal(str, key))
+  </script>
+</body>
+
+</html>

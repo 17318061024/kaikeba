@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let str
+    while (str = readline()) {
+      const num = str.length % 8;
+      let n = num ? 8 - num : 0
+      const str1 = str.concat(new String('0').repeat(n))
+      for (let i = 0; i < str1.length;) {
+        console.log(str1.substring(i, i += 8))
+      }
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * @param {string} s
+     * @return {number}
+     */
+    var addTwoNumbers = function (l1, l2) {
+      let newLR = newL2 = {};
+      let b = false;
+      add(l1, l2, newL2)
+
+      function add(n1, n2, newL) {
+        if (n1 === null && n2 === null) {
+          return newLR
+        }
+
+        if (n1 === null) {
+          n2 = {
+            val: 0,
+            next: null
+          }
+        }
+        if (n2 === null) {
+          n2 = {
+            val: 0,
+            next: null
+          }
+        }
+
+        let res = n1.val + n2.val + (b ? 1 : 0)
+
+        if (res >= 10) {
+          b = true;
+          newL.val = res % 10
+        } else {
+          b = false;
+          newL.val = res
+        };
+        newL.next = {}
+
+        return add(n1.next, n2.next, newL.next)
+      }
+
+
+    }
+
+
+    const l1 = {
+      val: 9,
+      next: {
+        val: 9,
+        next: {
+          val: 9,
+          next: null
+        }
+      }
+    }
+    const l2 = {
+      val: 8,
+      next: {
+        val: 8,
+        next: null
+      }
+    }
+    const r = addTwoNumbers(l1, l2);
+    console.log(r);
+  </script>
+
+</body>
+
+</html>

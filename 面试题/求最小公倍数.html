@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let str = "4 8"
+
+    function run(str) {
+      let arr = str.split(" ")
+      let max = Math.max(...arr);
+      let min = Math.min(...arr);
+      if (max % min === 0) return max;
+      let result = max;
+      let start = 2;
+      while (result <= max * min) {
+        result = max * start;
+        if (result % min === 0) break
+        start++
+      }
+      return result
+
+    }
+    console.log(run(str));
+  </script>
+
+</body>
+
+</html>
