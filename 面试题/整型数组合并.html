@@ -1,0 +1,14 @@
+<script>
+  while (line = readline()) {
+    let arr1 = readline().split("");
+    let arr2 = readline().split("");
+    arr1.concat(arr2);
+    let arr = arr1.sort((a, b) => a - b)
+    return arr.join("")
+  }
+  let arr1 = [2, 3, 5, -1]
+  let arr2 = [22, -3, 5, -1];
+  arr1 = arr1.concat(arr2);
+  let arr = arr1.sort((a, b) => a - b)
+  console.log(arr.join(""))
+</script>

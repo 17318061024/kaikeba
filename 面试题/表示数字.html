@@ -1,0 +1,21 @@
+<script>
+  function run(num) {
+    let reg = /[0-9]+/g;
+    num = num.replace(reg, (val) => `*${val}*`)
+    return num
+  }
+
+
+  console.log(run('Jkdi234klowe90a3'))
+
+  // const str = '<span>{{var1}}</span><div>{{var2}}</div>'
+  // const reg = /\{\{(.*?)\}\}/g
+  // const match = str.match(reg) // 得到['{{var1}}', '{{var2}}']
+  // const varRes = match.map(item => {
+  //   reg.lastIndex = 0 // exec方法每次使用后会将lastIndex值设为匹配后的index，更换字符串需要手动重置
+  //   reg.exec(item) // [ '{{var1}}', 'var1', index: 0, input: '{{var1}}', groups: undefined ]
+  //   return RegExp.$1 // RegExp.$1用于保存最近一次exec或test产生的匹配结果中，括号内的内容
+  // })
+
+  // console.log(varRes) // ['var1', 'var2']
+</script>

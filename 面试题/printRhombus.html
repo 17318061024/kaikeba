@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function rhombus(row) {
+      if (row % 2 !== 1) {
+        throw new Error("必须输入正奇数哦")
+        return
+      }
+      let index = 1; //打印的行数
+      let i = 1; //第一行打印一个，每次增加两个
+      while (index <= row) {
+        console.log(" ".repeat((row - i) / 2) + '*'.repeat(i) + " ".repeat((row - i) / 2))
+
+        if (index < (row + 1) / 2) { //上半部分
+          i += 2
+        } else { //下半部分
+          i -= 2
+        }
+        index++
+
+      }
+
+
+    }
+    rhombus(5)
+  </script>
+
+
+</body>
+
+</html>

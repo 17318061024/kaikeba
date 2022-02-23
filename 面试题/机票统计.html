@@ -1,0 +1,18 @@
+<script>
+  let personNum = 4;
+  let perArr = ['A', 'B', 'C', 'D'];
+  let pNum = 8;
+  let pArr = "A D E CF A GG A B".split(" ");
+  let obj = {};
+  let Inv = 0
+  pArr.forEach(item => {
+
+    if (perArr.indexOf(item) > -1) {
+      if (!obj[item]) obj[item] = 0;
+      obj[item]++;
+    } else {
+      Inv++
+    }
+  })
+  console.log(obj, Inv)
+</script>

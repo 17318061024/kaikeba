@@ -1,0 +1,24 @@
+<script>
+  function fn() {
+    fn()
+  }
+
+  function fn1() {
+    setTimeout(() => {
+      fn1()
+    }, 0)
+  }
+
+  function fn2() {
+    Promise.resolve().then(() => {
+      fn2()
+    })
+  }
+  // fn()
+  // fn1()
+  // fn2()
+
+  //问题二 在created里执行异步，和mounted的执行顺序是
+  //问题三 数字证书加密流程
+  console.log(1)
+</script>

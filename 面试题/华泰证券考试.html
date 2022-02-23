@@ -1,0 +1,9 @@
+<script>
+  function run(a, b, c) {
+    c = 10;
+    arguments[0]=arguments[2];
+    console.log(arguments);
+    return a + b + c
+  }
+  console.log(run(1, 1, 1))
+</script>

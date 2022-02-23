@@ -1,0 +1,28 @@
+<script>
+  let str = "aabcddd";
+
+  function run(str) {
+    let arr = str.split("");
+    let obj = {};
+    let minArr = [];
+    let minNum = 1;
+    for (let val of arr) {
+      if (!obj[val]) obj[val] = 0;
+      obj[val]++
+    }
+    let ls = []
+    for (let key in obj) {
+      ls.push(obj[key])
+    }
+    minNum = Math.min(...ls);
+    for (let key in obj) {
+      if (obj[key] === minNum) minArr.push(key)
+    }
+
+    minArr.forEach(item => {
+      str = str.replace(new RegExp(item, 'g'), '')
+    })
+    return str
+  }
+  console.log(run(str))
+</script>

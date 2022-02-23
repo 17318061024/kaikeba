@@ -1,0 +1,12 @@
+<script>
+  let num = 5;
+
+  function run(num) {
+    let result = num.toString(2);
+    let reg = /1/g;
+    console.log(result)
+    return result.match(reg).length
+
+  }
+  console.log(run(num));
+</script>
