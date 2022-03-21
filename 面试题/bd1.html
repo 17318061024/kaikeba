@@ -1,0 +1,31 @@
+<script>
+  //可以看到吗?
+  //这样可以吗?
+  好的
+
+  class Event {
+    constructor() {
+      this.events = {}
+      this.onceEvent = []
+    }
+    on(name, cb) {
+      if (!this.events[name]) {
+        this.events[name] = new Set()
+      }
+      this.events[name].add(cb)
+
+    }
+    once(name, cb) {
+      this.onceEvent.push(name)
+      this.on(name, cb)
+    }
+    emit(name) {
+      this.events[name].forEach(cb => cb())
+      //判断是once,执行完删除
+      if (this.onceEvent.indexOf(name)) {
+        this.events.delete(name)
+      }
+    }
+
+  }
+</script>

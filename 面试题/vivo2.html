@@ -1,0 +1,52 @@
+<script>
+  let obj = {
+    a: '1'
+  }
+  let observer = {}
+  let target = null;
+
+
+
+  const rObj = reactive(obj)
+  let res1 = ''
+  generateEffect(() => {
+    res1 = rObj.a
+  })
+  console.log(rObj)
+  rObj.a = 11
+  console.log(res1)
+
+
+
+  function reactive(ObjectM) {
+    Object.defineProperty(ObjectM, 'a', {
+      get() {
+        add('a')
+      },
+      set(value) {
+        // obj['a'] = value
+        notify('a')
+      }
+
+    })
+    ObjectM.a;
+    return ObjectM
+
+  }
+
+  function generateEffect(fn) {
+    target = fn;
+  }
+
+  function add(key) {
+    if (!observer[key]) {
+      observer[key] = []
+    }
+    observer[key].push(target)
+    target = null
+  }
+
+  function notify(key) {
+    observer[key].forEach(fn => fn())
+  }
+</script>

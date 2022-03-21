@@ -1,0 +1,40 @@
+<script>
+  let res1 = func(1)
+
+  console.log(res1.value) // 1    
+
+  let res2 = res1(3)
+  console.log(res2)
+  console.log(res2.value) // 10    
+  let res3 = res2(5)
+  console.log(res3.value) // 35    
+  let res7 = res2(6) // 46
+  console.log(res7.value) // 46    
+  // 后续以此类推    
+  let res4 = func(2)
+  console.log(res4.value) // 4    
+  let res5 = res4(4)
+  console.log(res5.value) // 20    
+  let res6 = res5(6)
+  console.log(res6.value) // 56
+  // tips ，每个函数都是幂等的（在这里表示参数一致，value相等）
+  function func(a) {
+    let i = 0;
+    let sum = a * a;
+
+    let fun = function (b) {
+      i++
+      if (i < 3) {
+        sum += b * b;
+      }
+
+      fun.value = i < 3 ? sum : sum += b * b;
+      return fun
+    }
+    fun.value = sum;
+
+    return fun;
+
+
+  }
+</script>

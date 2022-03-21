@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 3.关系型数组转换成树形结构对象
+    // var obj = [
+    //   { "id": 3, "parent": 2 },
+    //   { "id": 1, "parent": null },
+    //   { "id": 2, "parent": 1 }
+    // ]
+    // 转换成
+    // o = {
+    //   "obj": {
+    //     "id": 1,
+    //     "parent": null,
+    //     "children": [{
+    //       "id": 2,
+    //       "parent": 1,
+    //       "children": [{
+    //         "id": 3,
+    //         "parent": 2
+    //       }]
+    //     }]
+    //   }
+    // }
+    var obj = [{
+        "id": 3,
+        "parent": 2
+      },
+      {
+        "id": 1,
+        "parent": null
+      },
+      {
+        "id": 2,
+        "parent": 1
+      },
+      {
+        "id": 4,
+        "parent": 1
+      },
+      {
+        "id": 5,
+        "parent": 2
+      }
+    ]
+
+    function run(obj) {
+      const treeList = [],
+        map = {};
+
+      obj.forEach(item => {
+        if (!item.children) {
+          item.children = []
+        }
+        map[item.id] = item
+      })
+      obj.forEach(item => {
+        const parent = map[item.parent]
+        if (parent) {
+          parent.children.push(item)
+        } else {
+          treeList.push(item)
+        }
+      })
+      return treeList[0]
+    }
+    console.log(run(obj))
+  </script>
+
+</body>
+
+</html>

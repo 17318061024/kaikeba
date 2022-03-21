@@ -1,0 +1,30 @@
+<script>
+  function run(s, k) {
+    let start1 = s;
+    let start2 = s;
+    let i = 0;
+    while (start2.next !== null) {
+      if (i < k) {
+        start2 = start2.next()
+      } else {
+        start2 = start2.next()
+        start1 = start1.next()
+      }
+
+
+    }
+    return start1.value;
+
+
+  }
+  run()
+  //3 //5
+
+  3 2
+
+  2 5
+
+  3 4
+
+  //4
+</script>

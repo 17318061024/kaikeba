@@ -1,0 +1,27 @@
+<script>
+  function run(arr) {
+    let result = [];
+    for (let item of arr) {
+      if (result.length < 2) {
+        result.push(item)
+      } else {
+        let isAdd = false;
+        for (let i = 0; i < result.length; i++) {
+          if (result[i] > item) {
+            result.splice(i, 0, item)
+            isAdd = true
+            break
+          }
+        }
+        if (!isAdd) {
+          result.push(item)
+        }
+      }
+    }
+    return result
+
+
+
+  }
+  console.log(run([2, 4, 6, 1]))
+</script>

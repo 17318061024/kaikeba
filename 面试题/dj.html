@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1.封装一个Modal对话框组件，输入是对话框内容html,按钮以及回调z
+    class Model {
+      constructor(html, btnArr) {
+        this.content = html;
+        this.btnArr = btnArr;
+        this.isShow = false;
+        this.vnode = null;
+      }
+      show() {
+        if (!this.isShow) {
+          let textContent = document.createElement('p');
+          textContent.innerHTML = this.content;
+          let btnContent = document.createElement('div')
+          let btns = this.btnArr.forEach((item) => {
+            let btn = document.createElement('button');
+            btn.innerText = item.name;
+            btn.addEventListener('click', item.callback);
+            btnContent.appendChild(btn)
+          })
+          this.vnode = document.createElement('div');
+          this.vnode.style.cssText =
+            'width:200px;position:fixed;left:50%;top:50%;background-color:#e4393c;transform:translate(-50%,-50%)';
+          this.vnode.appendChild(textContent);
+          this.vnode.appendChild(btnContent);
+
+          document.body.appendChild(this.vnode);
+          this.isShow = true;
+        }
+      }
+      hide() {
+        document.body.removeChild(this.vnode);
+        this.isShow = false;
+      }
+    }
+    let myModel = new Model('测试', [{
+      name: '确定',
+      callback: () => {
+        console.log('点击了按钮')
+        myModel.hide()
+      }
+    }])
+    myModel.show()
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<script>
+  let arr1 = [2, 5, 6, 8, 4100];
+  let arr2 = [2, 8];
+
+  function run(arr1, arr2) {
+    if (arr2.length > arr1.length) return false
+    for (let i = 0; i < arr2.length; i++) {
+      let item = arr2[i]
+      let index = arr1.indexOf(item);
+      if (index === -1) {
+        return false
+      }
+      arr1.splice(index, 1)
+    }
+    return true
+
+  }
+
+  function run2(arr1, arr2) {
+    let all = [...new Set(arr1.concat(arr2))];
+    return all.toString() === arr1.toString()
+  }
+  console.log(run2(arr1, arr2))
+</script>
