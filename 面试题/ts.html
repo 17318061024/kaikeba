@@ -1,0 +1,75 @@
+<script>
+  const input = [{
+      id: 1,
+      parentId: null
+    },
+    {
+      id: 2,
+      parentId: null
+    },
+    {
+      id: 3,
+      parentId: 1
+    },
+    {
+      id: 4,
+      parentId: 1
+    },
+    {
+      id: 5,
+      parentId: 3
+    },
+  ]
+
+  const output = [{
+      id: 1,
+      parentId: null,
+      children: [{
+          id: 3,
+          parentId: 1,
+          children: [{
+            id: 5,
+            parentId: 3,
+            children: []
+          }]
+        },
+        {
+          id: 4,
+          parentId: 1,
+          children: []
+        }
+      ]
+    },
+    {
+      id: 2,
+      parentId: null,
+      children: []
+    }
+  ]
+
+  function createTree(input) {
+    let m = new Map();
+    let result = [];
+    input.forEach(item => {
+      if (!m.has(item.id)) {
+        m.set(item.id, item);
+      }
+      if (!item.parentId) {
+        result.push(item)
+      }
+      let par = m.get(item.parentId)
+      if (!par) return
+      if (!par.children) {
+        par.children = []
+      }
+      par.children.push(item)
+
+
+
+
+    })
+    return result;
+  }
+
+  console.log(createTree(input))
+</script>
